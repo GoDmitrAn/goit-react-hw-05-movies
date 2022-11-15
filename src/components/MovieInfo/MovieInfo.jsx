@@ -1,5 +1,6 @@
 import {
   DescriptionMovie,
+  InformationBox,
   InfoTitle,
   MovieWrapper,
   PosterWrapp,
@@ -7,7 +8,7 @@ import {
 import { BASE_IMAGE_URL } from '../TrendMovies/TrendMovies';
 import { Link, Outlet } from 'react-router-dom';
 export const MovieInfo = ({ movie }) => {
-  const { poster_path, title, popularity, overview, release_date, genres, id } =
+  const { poster_path, title, popularity, overview, release_date, genres } =
     movie;
   return (
     <>
@@ -33,14 +34,17 @@ export const MovieInfo = ({ movie }) => {
           </p>
         </DescriptionMovie>
       </MovieWrapper>
-      <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
+      <InformationBox>
+        <h3>Additional information</h3>
+        <ul>
+          <li>
+            <Link to="cast">Cast</Link>
+          </li>
+          <li>
+            <Link to="reviews">Reviews</Link>
+          </li>
+        </ul>
+      </InformationBox>
       <Outlet />
     </>
   );
