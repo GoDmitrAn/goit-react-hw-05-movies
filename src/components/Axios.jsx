@@ -17,7 +17,7 @@ import axios from 'axios';
 //     return 'error';
 //   }
 // }
-export async function getMovieById(id) {
+async function getMovieById(id) {
   try {
     const response = await axios(`https://api.themoviedb.org/3/movie/${id}`, {
       params: {

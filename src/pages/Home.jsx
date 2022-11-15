@@ -1,4 +1,4 @@
-import { TrendMovies } from 'components/TrendMovies';
+import { TrendMovies } from 'components/TrendMovies/TrendMovies';
 
 export const Home = () => {
   return (

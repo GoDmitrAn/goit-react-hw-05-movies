@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 import { useParams } from 'react-router-dom';
-import { MovieInfo } from 'components/MovieInfo';
+import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -30,5 +30,18 @@ export const MovieDetails = () => {
       controller.abort();
     };
   }, [movieId]);
-  return <main>{movie && <MovieInfo movie={movie} />}</main>;
+  return (
+    <main>
+      {movie && <MovieInfo movie={movie} />}
+      {/* <ul>
+        <li>
+          <Link to="cast">Cast</Link>
+        </li>
+        <li>
+          <Link to="reviews">Reviews</Link>
+        </li>
+      </ul>
+      <Outlet /> */}
+    </main>
+  );
 };
