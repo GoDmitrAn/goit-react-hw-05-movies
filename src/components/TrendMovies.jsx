@@ -10,44 +10,48 @@ export const TrendMovies = () => {
   const [trendMovies, setTrendMovies] = useState('');
   const [error, setError] = useState(null);
   useEffect(() => {
+    const controller = new AbortController();
     async function fetchTrendFilms() {
       try {
         const response = await axios(TREND_FILMS_URL, {
+          signal: controller.signal,
           params: {
             api_key: process.env.REACT_APP_API_KEY,
           },
         });
-        console.log(response.data.results);
+        // console.log(response.data.results);
         setTrendMovies(response.data.results);
+        setError(null);
       } catch (error) {
         console.log(error);
         setError('Sorry, please reload');
       }
     }
     fetchTrendFilms();
+    return () => {
+      controller.abort();
+    };
   }, []);
   return (
     <div>
-      {error && <div>{error}</div>}
-      {trendMovies && (
+      {(trendMovies.length > 0 && (
         <MovieGallery>
           {trendMovies.map(movie => {
             return (
-              <MovieGalleryItem key={movie.id}>
+              <MovieGalleryItem to={`movies/${movie.id}`} key={movie.id}>
                 <img
                   src={BASE_IMAGE_URL + movie.poster_path}
                   alt={movie.title}
                   loading="lazy"
                 />
-                <h2>
-                  {movie.title}
-                  {console.log(movie)}
-                </h2>
+                <h2>{movie.title}</h2>
               </MovieGalleryItem>
             );
           })}
         </MovieGallery>
-      )}
+      )) ||
+        (error && <div>{error}</div>)}
     </div>
   );
 };
+export { BASE_IMAGE_URL };
