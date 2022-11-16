@@ -17,11 +17,15 @@ export const InfoTitle = styled.span`
 `;
 export const DescriptionMovie = styled.div`
   padding: 10px 20px;
-  flex: 3;
+  flex: 7;
 `;
 export const InformationBox = styled.div`
   border-bottom: 1px solid #2e2e2e;
+  margin-top: 10px;
   & ul {
-    margin-left: 20px;
+  }
+  & h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
   }
 `;

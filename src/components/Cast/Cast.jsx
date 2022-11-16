@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { CastList, Character } from './Cast.styled';
-import { BASE_IMAGE_URL } from '../components/TrendMovies/TrendMovies';
+import { BASE_IMAGE_URL } from '../TrendMovies/TrendMovies';
 
 export const Cast = () => {
   const { movieId } = useParams();
