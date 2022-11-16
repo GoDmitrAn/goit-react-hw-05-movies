@@ -5,16 +5,20 @@ export const CastList = styled.ul`
   list-style: none;
   flex-wrap: wrap;
   & li {
-    width: 150px;
-    height: 100px;
-    display: block;
-    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    width: 130px;
+    text-align: center;
+
     & img {
-      max-width: 100%;
       max-height: 100%;
     }
     & p {
       margin: 0;
     }
   }
+`;
+export const Character = styled.h4`
+  margin-top: 0;
+  margin-bottom: 5px;
 `;

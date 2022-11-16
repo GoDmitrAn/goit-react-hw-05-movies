@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { CastList } from './Cast.styled';
+import { CastList, Character } from './Cast.styled';
 import { BASE_IMAGE_URL } from '../components/TrendMovies/TrendMovies';
 
 export const Cast = () => {
@@ -27,17 +27,17 @@ export const Cast = () => {
     getCastById(movieId);
     return () => {
       controller.abort();
+      setCastList(null);
     };
   }, [movieId]);
   return (
     <section>
-      <h3>Cast</h3>
       {castList && (
         <CastList>
           {castList.map(item => {
             return (
               <li key={item.id}>
-                <p>{item.character}</p>
+                <Character>{item.character}</Character>
                 <img
                   src={BASE_IMAGE_URL + item.profile_path}
                   alt={item.character}
