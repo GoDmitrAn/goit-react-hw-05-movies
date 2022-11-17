@@ -1,11 +1,13 @@
 import axios from 'axios';
 
-import { useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
 export const MovieDetails = () => {
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
 
@@ -32,6 +34,7 @@ export const MovieDetails = () => {
   }, [movieId]);
   return (
     <main>
+      <Link to={backLinkHref}>Back</Link>
       {movie && <MovieInfo movie={movie} />}
       {/* <ul>
         <li>

@@ -5,6 +5,7 @@ import { ReviewsList } from './Reviews.styled';
 export const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState(null);
+  const [reviewsErr, setReviewsErr] = useState(null);
   useEffect(() => {
     const controller = new AbortController();
     async function getReviewsById(id) {
@@ -18,6 +19,10 @@ export const Reviews = () => {
             },
           }
         );
+        if (response.data.results.length === 0) {
+          setReviewsErr('Sorry, no reviews');
+          return;
+        }
         setReviews(response.data.results);
       } catch (error) {}
     }
@@ -41,6 +46,7 @@ export const Reviews = () => {
           })}
         </ReviewsList>
       )}
+      {reviewsErr && <p>{reviewsErr}</p>}
     </section>
   );
 };
