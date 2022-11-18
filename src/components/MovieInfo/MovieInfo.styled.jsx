@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
 
 export const MovieWrapper = styled.div`
   display: flex;
@@ -27,5 +28,20 @@ export const InformationBox = styled.div`
   & h3 {
     margin-top: 0;
     margin-bottom: 10px;
+  }
+`;
+export const ToBack = styled(Link)`
+  display: block;
+  width: 60px;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  background-color: aliceblue;
+  font-weight: 500;
+  border: 1px solid #2e2e2e;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  &:hover {
+    background-color: antiquewhite;
   }
 `;

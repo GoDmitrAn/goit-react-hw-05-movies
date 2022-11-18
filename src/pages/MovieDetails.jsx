@@ -4,6 +4,7 @@ import { Link, useLocation, useParams } from 'react-router-dom';
 import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import { ToBack } from 'components/MovieInfo/MovieInfo.styled';
 
 export const MovieDetails = () => {
   const location = useLocation();
@@ -34,17 +35,8 @@ export const MovieDetails = () => {
   }, [movieId]);
   return (
     <main>
-      <Link to={backLinkHref}>Back</Link>
+      <ToBack to={backLinkHref}>Go Back</ToBack>
       {movie && <MovieInfo movie={movie} />}
-      {/* <ul>
-        <li>
-          <Link to="cast">Cast</Link>
-        </li>
-        <li>
-          <Link to="reviews">Reviews</Link>
-        </li>
-      </ul>
-      <Outlet /> */}
     </main>
   );
 };
