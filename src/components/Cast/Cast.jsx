@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import { CastList, Character } from './Cast.styled';
 import { BASE_IMAGE_URL } from '../TrendMovies/TrendMovies';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [castList, setCastList] = useState(null);
 
@@ -52,3 +52,4 @@ export const Cast = () => {
     </section>
   );
 };
+export default Cast;

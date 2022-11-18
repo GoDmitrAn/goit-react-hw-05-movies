@@ -10,7 +10,7 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 
-export const Movies = () => {
+const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const userSearch = searchParams.get('usersearch') ?? '';
   const [userSearchList, setUserSearchList] = useState([]);
@@ -72,3 +72,4 @@ export const Movies = () => {
     </main>
   );
 };
+export default Movies;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   DescriptionMovie,
   InformationBox,
@@ -11,7 +12,7 @@ export const MovieInfo = ({ movie }) => {
   const { poster_path, title, popularity, overview, release_date, genres } =
     movie;
   const location = useLocation();
-  // location.state.from = backHref;
+
   return (
     <>
       <MovieWrapper>
@@ -54,4 +55,7 @@ export const MovieInfo = ({ movie }) => {
       <Outlet />
     </>
   );
+};
+MovieInfo.propTypes = {
+  movie: PropTypes.object.isRequired,
 };

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { ReviewsList } from './Reviews.styled';
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState(null);
   const [reviewsErr, setReviewsErr] = useState(null);
@@ -50,3 +50,4 @@ export const Reviews = () => {
     </section>
   );
 };
+export default Reviews;

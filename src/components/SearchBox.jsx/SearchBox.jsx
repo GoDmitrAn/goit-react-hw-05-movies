@@ -1,10 +1,9 @@
+import PropTypes from 'prop-types';
 export const SearchBox = ({ userHandleSubmit }) => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.currentTarget;
     userHandleSubmit(form.elements.usersearch.value);
-    // setSearchParams({ usersearch: form.elements.usersearch.value });
-    // form.reset();
   };
   return (
     <>
@@ -14,4 +13,7 @@ export const SearchBox = ({ userHandleSubmit }) => {
       </form>
     </>
   );
+};
+SearchBox.propTypes = {
+  userHandleSubmit: PropTypes.func.isRequired,
 };

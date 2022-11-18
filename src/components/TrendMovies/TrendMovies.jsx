@@ -21,7 +21,6 @@ export const TrendMovies = () => {
             api_key: process.env.REACT_APP_API_KEY,
           },
         });
-        // console.log(response.data.results);
         setTrendMovies(response.data.results);
         setError(null);
       } catch (error) {
