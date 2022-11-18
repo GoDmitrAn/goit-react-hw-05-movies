@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { Link, useLocation, useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { MovieInfo } from 'components/MovieInfo/MovieInfo';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -8,10 +8,16 @@ import { ToBack } from 'components/MovieInfo/MovieInfo.styled';
 
 export const MovieDetails = () => {
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  const [backHref, setBackHref] = useState('/');
+  // const backLinkHref = location.state?.from ?? '/';
+  // console.log(backLinkHref);
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-
+  useEffect(() => {
+    if (location.state) {
+      setBackHref(location.state.from);
+    } else setBackHref('/');
+  }, []);
   useEffect(() => {
     const controller = new AbortController();
     async function getMovieById(id) {
@@ -35,7 +41,7 @@ export const MovieDetails = () => {
   }, [movieId]);
   return (
     <main>
-      <ToBack to={backLinkHref}>Go Back</ToBack>
+      <ToBack to={backHref}>Go Back</ToBack>
       {movie && <MovieInfo movie={movie} />}
     </main>
   );
