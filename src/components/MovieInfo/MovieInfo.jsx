@@ -6,10 +6,12 @@ import {
   PosterWrapp,
 } from './MovieInfo.styled';
 import { BASE_IMAGE_URL } from '../TrendMovies/TrendMovies';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 export const MovieInfo = ({ movie }) => {
   const { poster_path, title, popularity, overview, release_date, genres } =
     movie;
+  const location = useLocation();
+  // location.state.from = backHref;
   return (
     <>
       <MovieWrapper>
@@ -38,10 +40,14 @@ export const MovieInfo = ({ movie }) => {
         <h3>Additional information</h3>
         <ul>
           <li>
-            <Link to="cast">Cast</Link>
+            <Link to="cast" state={{ from: location.state.from }}>
+              Cast
+            </Link>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <Link to="reviews" state={{ from: location.state.from }}>
+              Reviews
+            </Link>
           </li>
         </ul>
       </InformationBox>

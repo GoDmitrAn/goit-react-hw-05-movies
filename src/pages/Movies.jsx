@@ -51,32 +51,22 @@ export const Movies = () => {
       <SearchBox userHandleSubmit={handleSubmit} />
       {userSearchList.length > 0 && (
         <MovieGallery>
-          {userSearchList.map(
-            movie => {
-              return (
-                <MovieGalleryItem
-                  to={`${movie.id}`}
-                  key={movie.id}
-                  state={{ from: location }}
-                >
-                  <img
-                    src={BASE_IMAGE_URL + movie.poster_path}
-                    alt={movie.title}
-                    loading="lazy"
-                  />
-                  <h2>{movie.title}</h2>
-                </MovieGalleryItem>
-              );
-            }
-
-            // item => {
-            //   return (
-            //     <li key={item.id}>
-            //       <h2>{item.title}</h2>
-            //     </li>
-            //   );
-            // }
-          )}
+          {userSearchList.map(movie => {
+            return (
+              <MovieGalleryItem
+                to={`${movie.id}`}
+                key={movie.id}
+                state={{ from: location }}
+              >
+                <img
+                  src={BASE_IMAGE_URL + movie.poster_path}
+                  alt={movie.title}
+                  loading="lazy"
+                />
+                <h2>{movie.title}</h2>
+              </MovieGalleryItem>
+            );
+          })}
         </MovieGallery>
       )}
     </main>
